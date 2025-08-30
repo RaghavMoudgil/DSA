@@ -1,63 +1,6 @@
 # DSA
 in this we are going to solve common DSA questions that interviewer asks in the interview.
-Find pairs with a given sum
 
-Find two elements in an array that sum up to a target value.
-
-go
-func findPair(arr []int, target int) (int, int, bool) {
-    m := make(map[int]int)
-    for _, v := range arr {
-        if idx, ok := m[target - v]; ok {
-            return idx, v, true
-        }
-        m[v] = v
-    }
-    return 0, 0, false
-}
-Maximum subarray sum (Kadane’s Algorithm)
-
-Find the contiguous subarray with the maximum sum.
-
-go
-func maxSubArray(nums []int) int {
-    maxSoFar, maxEndingHere := nums[0], nums[0]
-    for i := 1; i < len(nums); i++ {
-        maxEndingHere = max(nums[i], maxEndingHere + nums[i])
-        maxSoFar = max(maxSoFar, maxEndingHere)
-    }
-    return maxSoFar
-}
-
-func max(a, b int) int {
-    if a > b { return a }
-    return b
-}
-Strings
-Reverse a string
-
-Convert string to runes and swap elements to handle Unicode.
-
-go
-func reverseString(s string) string {
-    runes := []rune(s)
-    for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
-        runes[i], runes[j] = runes[j], runes[i]
-    }
-    return string(runes)
-}
-Check if a string is a palindrome
-
-go
-func isPalindrome(s string) bool {
-    runes := []rune(s)
-    for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
-        if runes[i] != runes[j] {
-            return false
-        }
-    }
-    return true
-}
 Linked Lists
 Reverse a linked list
 
