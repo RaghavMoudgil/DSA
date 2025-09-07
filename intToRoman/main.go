@@ -12,8 +12,8 @@ func intToRoman(num int) string {
 	result := ""
 	for i := 0; i < len(values); i++ {
 		for num >= values[i] {
-			num -= values[i]
-			result += symbols[i]
+			num -= values[i]     //reomving values from the main number
+			result += symbols[i] // appendign symbol of the same value to the result
 		}
 	}
 	return result
