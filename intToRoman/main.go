@@ -2,32 +2,23 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 )
 
+// we are not using range loop as order is not defined in the range loop so we are usnig the below loop and method
 func intToRoman(num int) string {
-	romanValues := map[string]int{
-		"I": 1,
-		"V": 5,
-		"X": 10,
-		"L": 50,
-		"C": 100,
-		"D": 500,
-		"M": 1000,
-	}
-	largest := 0
-	for i, v := range romanValues {
-		if (num) == v {
-			return i
+	values := []int{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1}
+	symbols := []string{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"}
+
+	result := ""
+	for i := 0; i < len(values); i++ {
+		for num >= values[i] {
+			num -= values[i]
+			result += symbols[i]
 		}
-
 	}
-	for i := 0; i < len(strconv.Itoa(num)); i++ {
-
-	}
-
-	return "cant convert"
+	return result
 }
+
 func main() {
 	fmt.Println(intToRoman(50))
 }
