@@ -17,6 +17,7 @@ func letterCombinations(digits string) []string {
 	backTrack = func(index int, curr string) {
 		if index == len(digits) {
 			result = append(result, curr)
+			return
 		}
 		letter := mapping[digits[index]]
 		for i := 0; i < len(letter); i++ {
